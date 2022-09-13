@@ -1,0 +1,113 @@
+.bio{
+    padding: 40px;
+    color: mediumpurple;
+    font-size: 30px;
+    text-align: center;
+}
+
+body {
+    background: -webkit-linear-gradient(45deg, pink 0%, wheat 33%, pink 66%, wheat 100%);
+    margin: 20px;
+    font-family: monospace;
+    width: 98%;
+    min-height: 800px;
+    font-size: 11px;
+    cursor: url("icons8-minecraft-pickaxe-30.png") 4 12, auto;
+}
+
+table{
+    width: 100%;
+}
+
+#main_table, #result_table{
+    padding-left: 45px;
+}
+
+#result_table{
+    padding-top: 15px;
+}
+
+#data_table{
+    padding: 10px;
+}
+
+#col1, #col2{
+    width: 50%;
+    text-align: center;
+}
+
+.col{ /* для наглядности каскадности */
+    text-align: right;
+}
+
+fieldset{
+    border: solid 3px mediumpurple;
+}
+
+fieldset legend{
+    padding: 0 12px;
+}
+
+form td, form th, fieldset legend {
+    text-align: left;
+}
+
+form td{
+    width: 33%;
+}
+
+label > span{
+    padding-left: 6px;
+}
+
+svg{
+    stroke: #363636;
+    fill: #363636;
+}
+
+svg:hover {
+    transform: scale(1.5);
+    cursor: url("icons8-minecraft-pickaxe-80.png") 4 12, auto;
+}
+
+input[type="submit"], button[type="clean_button"]{
+    background-color: lightgrey;
+    border-radius:6px;
+    color: black;
+    cursor: url("icons8-minecraft-sword-30.png") 4 12, auto;
+    margin-top: 10px;
+    padding: 6px 14px;
+    border: solid 1px mediumpurple;
+}
+
+input[type="submit"]:hover, button[type="clean_button"]:hover, input[type="button"]:hover{
+    background: mediumpurple;
+    box-shadow: 0 0 1px #777;
+}
+
+button[type="clean_button"]{
+    width: 8%;
+}
+
+input[type=button]{
+    background-color: lightgrey;
+    border-radius:6px;
+    color: black;
+    cursor: url("icons8-minecraft-sword-30.png") 4 12, auto;
+    padding: 2px 12px;
+    border: solid 1px mediumpurple;
+}
+
+input[type=checkbox], input[type=text]{
+    cursor: url("icons8-minecraft-sword-30.png") 4 12, auto;
+}
+
+input[type=text] {
+    box-shadow:0 0 20px 10px rgba(0,0,0,0.06);
+    border-radius:3px;
+    width:20%;
+}
+
+.message{
+    color: magenta;
+}
