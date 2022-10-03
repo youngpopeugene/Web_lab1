@@ -8,6 +8,9 @@ let R = "";
 
 let count = true;
 
+let timezone_offset_minutes = new Date().getTimezoneOffset();
+timezone_offset_minutes = timezone_offset_minutes === 0 ? 0 : -timezone_offset_minutes;
+
 function validator(){
     let checkboxes = document.querySelectorAll('input[name="value_X"]:checked');
 
@@ -23,7 +26,7 @@ function validator(){
     }
 
     x = form.querySelector('input[name="value_X"]:checked').value;
-    y = form.querySelector('[name="value_Y"]').value;
+    y = form.querySelector('[name="value_Y"]').value.replace(",", ".");
 
     if(y.toLowerCase() == "e"){
         y = Math.E.toFixed(2);
@@ -43,15 +46,21 @@ function validator(){
 function post_request(event){
     event.preventDefault();
     if(validator()) {
-        let data = " R= " + encodeURIComponent(R) + " & x= " + encodeURIComponent(x) + " & y= " + encodeURIComponent(y);
+        let data = " R= " + encodeURIComponent(R) + " & x= " + encodeURIComponent(x) + " & y= " + encodeURIComponent(y) + " & timezone_offset_minutes= " + encodeURIComponent(timezone_offset_minutes);
+        console.log(data);
         let xhr = new XMLHttpRequest();
-        // xhr.open("POST", "/handler.php/src/php/handler.php", true);
+        // xhr.open("POST", "http://localhost:63343/handler.php/src/php/handler.php", true);
+
         xhr.open("POST", "handler.php", true);
+
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send(data);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
+                    console.log(x, y, R);
+                    $("#circle").attr("cx",150 + 100 * x/R );
+                    $("#circle").attr("cy",150 - 100 * y/R );
                     $('#result_table tr:last').after(xhr.response);
                     let prev = localStorage.getItem("result");
                     prev = prev + "\n" + xhr.response;
@@ -68,6 +77,8 @@ function onetime(){
         count = false;
     }
 }
+
+
 
 function set_valueR(value){
     R = value;
